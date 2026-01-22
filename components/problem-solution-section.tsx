@@ -75,13 +75,13 @@ export function ProblemSolutionSection() {
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></span>
-            The Problem Every Business Faces
+            The Cost of Guesswork
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-balance mb-4 sm:mb-6">
-            <span className="text-red-400">60-70%</span> of Your Leads Are Slipping Away
+            <span className="text-red-400">40%</span> of Potential Yield is Lost to Poor Decisions.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
-            While you're busy serving customers, your online inquiries are going unanswered. Here's how we fix it.
+          Farming without data is a gamble. Intuition and generic advice can't keep up with modern climate volatility, leading to massive preventable losses.
           </p>
         </div>
 
@@ -103,9 +103,9 @@ export function ProblemSolutionSection() {
 
               {/* Key Stat */}
               <div className="bg-red-500/10 backdrop-blur-sm border border-red-500/20 rounded-xl p-4 sm:p-6 mb-6">
-                <div className="text-3xl sm:text-4xl font-bold text-red-400 mb-2">4+ Hours</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-400 mb-2">90%</div>
                 <p className="text-white/80 text-sm sm:text-base">
-                  Average response time, but 78% of customers choose the first business to respond
+                of current AI models are trained on secondary, non-specific datasets.
                 </p>
               </div>
 
@@ -113,19 +113,19 @@ export function ProblemSolutionSection() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-white/70 text-sm sm:text-base">
-                    Staff miss inquiries during off-hours and weekends
+                  <p className="text-white/70 text-xs sm:text-sm">
+                  <strong>"Wide & Shallow" AI:</strong> Models that can write text but fail at crop pathology.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-white/70 text-sm sm:text-base">
-                    Busy serving customers while online leads go cold
+                  <p className="text-white/70 text-xs sm:text-sm">
+                  <strong>The Expertise Gap:</strong> Advisors lack the specific knowledge to save your harvest.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-white/70 text-sm sm:text-base">Marketing spend wasted on unresponded inquiries</p>
+                  <p className="text-white/70 text-xs sm:text-sm"><strong>Reactive Advisory:</strong> Fixing problems after the damage is already done.</p>
                 </div>
               </div>
             </div>
@@ -143,9 +143,9 @@ export function ProblemSolutionSection() {
 
               {/* Key Stat */}
               <div className="bg-green-500/10 backdrop-blur-sm border border-green-500/20 rounded-xl p-4 sm:p-6 mb-6">
-                <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">24/7</div>
+                <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">Real-Time</div>
                 <p className="text-white/80 text-sm sm:text-base">
-                  AI assistant responds within seconds, books appointments while you sleep
+                CertainAg provides an always on, PhD-level agronomist for every single acre.
                 </p>
               </div>
 
@@ -153,15 +153,15 @@ export function ProblemSolutionSection() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Instantly qualifies leads and books appointments</p>
+                  <p className="text-white/70 text-xs sm:text-sm"><strong>Primary Ground Truth:</strong> Models trained on verified, hyper-local field data.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Integrates with your CRM and calendar system</p>
+                  <p className="text-white/70 text-xs sm:text-sm"><strong>Instant Scalability:</strong> Solves the expertise gap immediately without human bottlenecks.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle />
-                  <p className="text-white/70 text-sm sm:text-base">Works across website, WhatsApp, email, and phone</p>
+                  <p className="text-white/70 text-xs sm:text-sm"><strong>Prescriptive Action:</strong> Tells you exactly what to do, not just what happened.</p>
                 </div>
               </div>
             </div>
