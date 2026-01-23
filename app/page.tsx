@@ -20,9 +20,10 @@ export default function HomePage() {
           <GlassmorphismNav />
           <HeroSection />
           <ProblemSolutionSection />
-          <FeaturesSection />
           <AITeamSection />
-          <TestimonialsSection />
+          <FeaturesSection />
+          
+        <TestimonialsSection />
           <ROICalculatorSection />
           <CTASection />
           <Footer />

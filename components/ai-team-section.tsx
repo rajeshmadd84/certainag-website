@@ -105,6 +105,7 @@ export function AITeamSection() {
   const [isTyping, setIsTyping] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const chatContainerRef = useRef<HTMLDivElement>(null)
+  const chatContainerRef2 = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -134,6 +135,9 @@ export function AITeamSection() {
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+    }
+    if (chatContainerRef2.current) {
+      chatContainerRef2.current.scrollTop = chatContainerRef2.current.scrollHeight
     }
   }, [displayedMessages, isTyping])
 
@@ -222,45 +226,120 @@ export function AITeamSection() {
           </div>
 
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
-            {/* Left side - Text content */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center lg:h-[600px] space-y-6 lg:space-y-8 order-2 lg:order-1">
-              <div
-                className={`transition-all duration-1000 delay-600 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 lg:mb-6">
-                  This is what your car buyers see
-                </h3>
+            {/* Left side - Phone mockup */}
+            <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
+              <div className="max-w-md w-full">
+                <div
+                  className={`relative transition-all duration-1000 delay-600 ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  <div className="bg-slate-900 rounded-[2.5rem] p-2 shadow-2xl">
+                    <div className="bg-black rounded-[2rem] p-1">
+                      <div className="bg-white rounded-[1.5rem] overflow-hidden">
+                        {/* Status bar */}
+                        <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
+                          <div className="flex items-center gap-1">
+                            <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
+                            <span className="font-medium text-slate-700">Car Dealership AI</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-slate-500">
+                            <Clock className="w-3 h-3" />
+                            <span className="text-xs">24/7</span>
+                          </div>
+                        </div>
 
-                <div className="space-y-3 lg:space-y-4 text-base lg:text-lg text-slate-700 leading-relaxed">
-                  <p>
-                    While you're closed, your AI assistant is answering car questions, booking test drives, and helping
-                    customers 24/7.
-                  </p>
+                        <div className="bg-slate-900 px-6 py-4 text-white">
+                          <div className="flex items-center gap-3">
+                            <img
+                              src="/images/michael-ai-agent.jpg"
+                              alt="Michael - AI Agent"
+                              className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
+                            />
+                            <div className="flex-1">
+                              <h3 className="font-semibold text-sm">Michael - AI Sales Agent</h3>
+                              <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
+                            </div>
+                            <div className="text-xs text-green-400 flex items-center gap-1">
+                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                              Online
+                            </div>
+                          </div>
+                        </div>
 
-                  <p>
-                    Every conversation you're watching could be happening at midnight, on Sundays, or when your sales
-                    team is with other customers.
-                  </p>
+                        {/* Chat messages */}
+                        <div
+                          ref={chatContainerRef2}
+                          className="h-96 overflow-y-scroll scrollbar-hide p-4 space-y-3 bg-slate-50"
+                          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                        >
+                          {displayedMessages.map((message, index) => (
+                            <div
+                              key={index}
+                              className={`flex ${message.sender === "customer" ? "justify-end" : "justify-start"}`}
+                            >
+                              {message.sender === "ai" && (
+                                <img
+                                  src="/images/michael-ai-agent.jpg"
+                                  alt="Michael"
+                                  className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
+                                />
+                              )}
+                              <div
+                                className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${
+                                  message.sender === "customer"
+                                    ? "bg-slate-900 text-white rounded-br-md"
+                                    : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
+                                }`}
+                              >
+                                {message.text.split("\n").map((line, i) => (
+                                  <div key={i}>{line}</div>
+                                ))}
+                              </div>
+                              {message.sender === "customer" && (
+                                <div className="w-6 h-6 rounded-full bg-slate-400 ml-2 mt-1 flex-shrink-0 flex items-center justify-center text-xs text-white font-medium">
+                                  C
+                                </div>
+                              )}
+                            </div>
+                          ))}
 
-                  <p className="text-lg lg:text-xl font-semibold text-slate-900">
-                    Your competitors are losing these car sales.
-                  </p>
-                </div>
-              </div>
+                          {/* Typing indicator */}
+                          {isTyping && (
+                            <div className="flex justify-start items-start">
+                              <img
+                                src="/images/michael-ai-agent.jpg"
+                                alt="Michael"
+                                className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
+                              />
+                              <div className="bg-white p-3 rounded-2xl rounded-bl-md shadow-sm border border-slate-200">
+                                <div className="flex space-x-1">
+                                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                                  <div
+                                    className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                    style={{ animationDelay: "0.1s" }}
+                                  ></div>
+                                  <div
+                                    className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                    style={{ animationDelay: "0.2s" }}
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
 
-              <div
-                className={`transition-all duration-1000 delay-800 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <div className="p-4 lg:p-6 bg-slate-50 rounded-xl border-l-4 border-slate-900">
-                  <p className="text-slate-800 font-medium text-sm lg:text-base">
-                    "We went from missing 70% of after-hours car inquiries to capturing every single lead. Our test
-                    drive bookings increased 50% in the first month."
-                  </p>
-                  <p className="text-xs lg:text-sm text-slate-600 mt-2">— Mike Rodriguez, Car Dealership Owner</p>
+                        <div className="p-4 bg-white border-t border-slate-200">
+                          <div className="flex items-center gap-3 bg-slate-100 rounded-full px-4 py-2">
+                            <span className="text-slate-500 text-sm lg:text-base flex-1">Michael is responding...</span>
+                            <div className="w-6 h-6 bg-slate-900 rounded-full flex items-center justify-center">
+                              <Zap className="w-3 h-3 text-white" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
