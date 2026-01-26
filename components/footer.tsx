@@ -57,56 +57,40 @@ const footerLinks: FooterSection[] = [
 
 export function Footer() {
   return (
-    <footer className="md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
-      <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
-
-      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-        <AnimatedContainer className="space-y-4">
-          <div className="h-10 flex items-center">
-            <Image 
-              src="/images/cag-logo.svg" 
-              alt="CertainAg Logo" 
-              width={156} 
-              height={40} 
-              className="h-full w-auto object-contain" 
-            />
-          </div>
-          <div className="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">
-            <p>© {new Date().getFullYear()} CertainAg. All rights reserved.</p>
-          </div>
-        </AnimatedContainer>
-
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-          {footerLinks.map((section, index) => (
-            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-              <div className="mb-10 md:mb-0">
-                <h3 className="text-xs">{section.label}</h3>
-                <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="hover:text-foreground inline-flex items-center transition-all duration-300"
-                      >
-                        {link.icon && <link.icon className="me-1 size-4" />}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedContainer>
-          ))}
+    <footer className="w-full bg-white border-t border-slate-200 px-6 py-8 md:py-12">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+        {/* Column 1: Logo */}
+        <div className="flex justify-center md:justify-start">
+          <Image 
+            src="/images/cag-logo.svg" 
+            alt="CertainAg Logo" 
+            width={156} 
+            height={40} 
+            className="h-10 w-auto object-contain" 
+          />
         </div>
-      </div>
 
-      <div className="md:hidden mt-8 text-center space-y-2">
-        <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} CertainAg. All rights reserved.</p>
-        <p className="text-muted-foreground text-xs">Web Development by Humexa</p>
-      </div>
+        {/* Column 2: Copyright */}
+        <div className="text-center text-slate-600 text-sm">
+          <p>© {new Date().getFullYear()} Cropwings Technologies Pvt. Ltd.</p>
+          <p className="text-xs mt-1">All rights reserved.</p>
+        </div>
 
-      <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
-        <p className="text-muted-foreground text-xs text-center">Web Development by Humexa</p>
+        {/* Column 3: Social Icons */}
+        <div className="flex justify-center md:justify-end gap-6">
+          <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <FacebookIcon size={20} />
+          </a>
+          <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <InstagramIcon size={20} />
+          </a>
+          <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <YoutubeIcon size={20} />
+          </a>
+          <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <LinkedinIcon size={20} />
+          </a>
+        </div>
       </div>
     </footer>
   )

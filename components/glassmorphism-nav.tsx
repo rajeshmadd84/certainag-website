@@ -97,7 +97,7 @@ export function GlassmorphismNav() {
         }}
       >
         {/* Logo Block */}
-        <div className="bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 shadow-lg flex items-center h-12 md:h-16">
+        <div className="bg-white border border-white/20 rounded-full px-6 py-2 shadow-lg flex items-center h-12 md:h-16">
           <Link
             href="/"
             className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
@@ -114,7 +114,7 @@ export function GlassmorphismNav() {
         </div>
 
         {/* Desktop Navigation Block */}
-        <div className="hidden md:flex bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-8 py-2 shadow-lg items-center h-16">
+        <div className="hidden md:flex bg-white border border-white/20 rounded-full px-8 py-2 shadow-lg items-center h-16">
           <div className="flex items-center space-x-8">
             {navigation.map((item) =>
               item.href.startsWith("/") ? (
@@ -139,7 +139,7 @@ export function GlassmorphismNav() {
         </div>
 
         {/* Mobile Menu Trigger Block */}
-        <div className="md:hidden bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 shadow-lg flex items-center h-12">
+        <div className="md:hidden bg-white border border-white/20 rounded-full px-4 py-2 shadow-lg flex items-center h-12">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-slate-900 hover:scale-110 transition-transform duration-200 cursor-pointer"
@@ -168,7 +168,7 @@ export function GlassmorphismNav() {
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
           >
-            <div className="bg-white/70 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-2xl">
+            <div className="bg-white border border-white/20 rounded-2xl p-4 shadow-2xl">
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) =>
                   item.href.startsWith("/") ? (

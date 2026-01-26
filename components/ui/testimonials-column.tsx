@@ -4,8 +4,6 @@ import { motion } from "framer-motion"
 
 interface Testimonial {
   text: string
-  name: string
-  role: string
 }
 
 export const TestimonialsColumn = (props: {
@@ -30,7 +28,7 @@ export const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, name, role }, i) => (
+              {props.testimonials.map(({ text }, i) => (
                 <div
                   className="p-10 rounded-3xl border border-white/20 shadow-lg bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] backdrop-blur-sm max-w-xs w-full shadow-gray-500/10"
                   style={{
@@ -39,11 +37,7 @@ export const TestimonialsColumn = (props: {
                   }}
                   key={i}
                 >
-                  <div className="text-gray-200 text-sm leading-relaxed">{text}</div>
-                  <div className="mt-5">
-                    <div className="font-medium tracking-tight leading-5 text-gray-100">{name}</div>
-                    <div className="leading-5 opacity-60 tracking-tight text-gray-300">{role}</div>
-                  </div>
+                  <div className="text-gray-100 text-lg font-bold leading-relaxed text-center">{text}</div>
                 </div>
               ))}
             </React.Fragment>

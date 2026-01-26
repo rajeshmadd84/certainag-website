@@ -32,45 +32,27 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      text: "We went from missing 70% of after-hours inquiries to capturing every single lead. Customer bookings increased 50% in the first month.",
-      name: "Mike Rodriguez",
-      role: "Business Owner",
+      text: "Which crop should I grow?",
     },
     {
-      text: "We spend so much less time thinking about lead response because of the instant engagement CertainAg offers us.",
-      name: "Sarah Chen",
-      role: "Sales Manager",
+      text: "Which seed variety will work best in my field?",
     },
     {
-      text: "With CertainAg, our conversion rates increased by 85% and boosted our weekend revenue by 40%.",
-      name: "Michael Torres",
-      role: "General Manager",
+      text: "Which type of sowing suits my field?",
     },
     {
-      text: "The AI handles customer questions 24/7, so we never miss a potential sale. Our team can focus on closing deals instead of answering basic questions.",
-      name: "Jennifer Walsh",
-      role: "Operations Director",
+      text: "Why is the flowering in my field low?",
     },
     {
-      text: "Customer satisfaction scores improved dramatically since implementing CertainAg. Clients love the instant responses and personalized recommendations.",
-      name: "David Kim",
-      role: "Customer Experience Manager",
+      text: "What is the optimal fertiliser dosage?",
     },
     {
-      text: "Our retail store saw a 60% increase in qualified leads. The chatbot handles product inquiries perfectly while we focus on in-person customers.",
-      name: "Lisa Thompson",
-      role: "Store Manager",
+      text: "How to improve the quality of my yield?",
     },
     {
-      text: "Property inquiries are handled instantly now. We've closed 3x more deals since implementing CertainAg's AI assistant.",
-      name: "James Wilson",
-      role: "Real Estate Broker",
+      text: "When to sell my crop? ",
     },
-    {
-      text: "Hotel bookings increased 45% with 24/7 availability. Guests get immediate answers about amenities and availability.",
-      name: "Maria Garcia",
-      role: "Hospitality Manager",
-    },
+    
   ]
 
   return (
