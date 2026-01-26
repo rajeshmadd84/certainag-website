@@ -21,7 +21,7 @@ export default function HomePage() {
           <HeroSection />
           <ProblemSolutionSection />
           <AITeamSection />
-          <FeaturesSection />
+          {/* <FeaturesSection /> */}
           
         <TestimonialsSection />
           <ROICalculatorSection />

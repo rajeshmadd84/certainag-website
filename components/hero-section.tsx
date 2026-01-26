@@ -30,7 +30,22 @@ const Play = () => (
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-30"
+        >
+          <source src="/cag.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero">
         {/* Badge */}
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 mt-12 animate-fade-in-badge">
@@ -46,7 +61,7 @@ export function HeroSection() {
             <span className="text-foreground">Agriculture</span>
             <RotatingText
               texts={["Predictable", "Scalable", "Investable"]}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-white text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg shadow-lg"
+              mainClassName="px-2 sm:px-2 md:px-3 text-white overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}

@@ -3,107 +3,102 @@
 import { useState, useEffect, useRef } from "react"
 import { MessageCircle, Clock, Zap } from "lucide-react"
 
-const conversations = [
+const leftConversations = [
   {
-    title: "Luxury Sedan Inquiry & Test Drive Booking",
+    title: "Crop Advice Inquiry",
     messages: [
-      { text: "Hi! I'm interested in the new Premium Sedan. Do you have any in stock?", sender: "customer", delay: 0 },
+      { text: "Suggest to me the best crop to grow?", sender: "farmer", delay: 0 },
       {
-        text: "We have several 2024 Premium Sedans available. Are you looking for a specific trim level or color?",
-        sender: "ai",
+        text: "In Hitec city, Serilingampalli, In January, You might consider planning crops like:",
+        sender: "CertainAg",
         delay: 1000,
       },
       {
-        text: "I'd prefer the Premium Plus trim in black or white. What's the price range?",
-        sender: "customer",
+        text: "1. Wheat: This is one of the most popular Rabi crops. it thrives in the cooler temperatures of January and can yield well if managed properly.",
+        sender: "CertainAg",
         delay: 2500,
       },
       {
-        text: "Great choice! The Premium Plus starts at €42,500. We have both black and white available. Would you like to schedule a test drive to experience it yourself?",
-        sender: "ai",
-        delay: 3500,
-      },
-      { text: "Yes, that would be perfect! When are you available?", sender: "customer", delay: 5000 },
-      {
-        text: "I can book you for tomorrow at 2pm, Thursday at 11am, or Friday at 4pm. All test drives are completely free and include a full vehicle walkthrough.",
-        sender: "ai",
-        delay: 6000,
-      },
-      { text: "Thursday at 11am works great!", sender: "customer", delay: 7500 },
-      {
-        text: "Perfect! I've booked your free test drive for Thursday at 11:00 AM. You'll receive a confirmation text shortly. Just bring your driver's license and we'll have the sedan ready for you!",
-        sender: "ai",
-        delay: 8500,
-      },
-    ],
-  },
-  {
-    title: "Vehicle Features & Financing",
-    messages: [
-      { text: "What's the fuel economy on the Luxury SUV?", sender: "customer", delay: 0 },
-      {
-        text: "The 2024 Luxury SUV gets an EPA-estimated 23 city/28 highway MPG. It also comes with all-wheel drive standard!",
-        sender: "ai",
-        delay: 1000,
-      },
-      {
-        text: "That's good! What about financing options?",
-        sender: "customer",
-        delay: 2500,
-      },
-      {
-        text: "We have excellent financing available! Current rates start at 2.9% APR for qualified buyers, and we also offer lease options starting at €379/month.",
-        sender: "ai",
-        delay: 4000,
-      },
-      { text: "Can I get pre-approved online?", sender: "customer", delay: 5500 },
-      {
-        text: "I can start your pre-approval right now. It takes just 2 minutes and won't affect your credit score. Would you like me to send you the secure link?",
-        sender: "ai",
-        delay: 6500,
-      },
-    ],
-  },
-  {
-    title: "After-Hours Service Inquiry",
-    messages: [
-      {
-        text: "Hi, it's 11 PM. My car's check engine light just came on. What should I do?",
-        sender: "customer",
-        delay: 0,
-      },
-      {
-        text: "I'm here to help! First, is the light solid or flashing? And is the car running normally?",
-        sender: "ai",
-        delay: 1000,
-      },
-      { text: "It's solid, and the car seems to be running fine", sender: "customer", delay: 2500 },
-      {
-        text: "That's good news! A solid light usually isn't urgent. You can continue driving normally, but I'd recommend bringing it in within the next few days. I can schedule your service appointment right now if you'd like.",
-        sender: "ai",
+        text: "2. Chickpeas (bengal gram): Another excellent option, chickpeas are drought-resistant can be quite profitable.",
+        sender: "CertainAg",
         delay: 3500,
       },
       {
-        text: "Yes please! And do you offer loaner cars?",
-        sender: "customer",
+        text: "3. Mustard: This oil seed crop is also suitable for this time of the year. It requires less water.",
+        sender: "CertainAg",
         delay: 5000,
       },
       {
-        text: "I've scheduled you for Tuesday at 9 AM and reserved a loaner vehicle. You'll get a confirmation email with all the details. Drive safely!",
-        sender: "ai",
+        text: "4. Barley: If you are looking for something a bit different, barley is a hardy crop that can do well in the cooler months.",
+        sender: "CertainAg",
         delay: 6000,
       },
     ],
   },
 ]
 
+const rightConversations = [
+  {
+    title: "Disease Diagnosis",
+    messages: [
+      { text: "Suggest to me the best crop to grow?", sender: "farmer", delay: 0 },
+      {
+        text: "Brown spots on tomato leaves often indicate Early Blight or Septoria Leaf Spot. Based on local weather patterns, humidity has been high.",
+        sender: "CertainAg",
+        delay: 1000,
+      },
+      {
+        text: "I recommend: \n1. Pruning infected lower leaves.\n2. Avoiding overhead watering.\n3. Applying a copper-based fungicide if it spreads.",
+        sender: "CertainAg",
+        delay: 2500,
+      },
+      {
+        text: "Would you like me to check the local availability of organic fungicides at the Serilingampalli market?",
+        sender: "CertainAg",
+        delay: 4000,
+      },
+      { text: "Yes, please. Also, how often should I water them now?", sender: "farmer", delay: 5500 },
+      {
+        text: "In January's cooler weather, watering every 3-4 days is usually sufficient. Always check the top inch of soil first!",
+        sender: "CertainAg",
+        delay: 6500,
+      },
+    ],
+  },
+  {
+    title: "Market Price Update",
+    messages: [
+      { text: "What's the current market price for Wheat in Serilingampalli?", sender: "farmer", delay: 0 },
+      {
+        text: "As of today, Wheat is trading at approx. ₹2,450 per quintal in the local mandis. Prices have seen a 2% rise this week.",
+        sender: "CertainAg",
+        delay: 1000,
+      },
+      {
+        text: "Would you like me to alert you if the price crosses ₹2,600?",
+        sender: "CertainAg",
+        delay: 2500,
+      },
+    ],
+  },
+]
+
 export function AITeamSection() {
-  const sectionRef = useRef<HTMLElement>(null) // Added section ref for intersection observer
+  const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [currentConversation, setCurrentConversation] = useState(0)
-  const [displayedMessages, setDisplayedMessages] = useState<any[]>([])
-  const [isTyping, setIsTyping] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Left side states
+  const [leftConversationIndex, setLeftConversationIndex] = useState(0)
+  const [leftMessages, setLeftMessages] = useState<any[]>([])
+  const [leftTyping, setLeftTyping] = useState(false)
+  const leftTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Right side states
+  const [rightConversationIndex, setRightConversationIndex] = useState(0)
+  const [rightMessages, setRightMessages] = useState<any[]>([])
+  const [rightTyping, setRightTyping] = useState(false)
+  const rightTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const chatContainerRef2 = useRef<HTMLDivElement>(null)
 
@@ -111,7 +106,6 @@ export function AITeamSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log("[v0] AI Team Section is now visible")
           setIsVisible(true)
         }
       },
@@ -136,45 +130,45 @@ export function AITeamSection() {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
+  }, [rightMessages, rightTyping])
+
+  useEffect(() => {
     if (chatContainerRef2.current) {
       chatContainerRef2.current.scrollTop = chatContainerRef2.current.scrollHeight
     }
-  }, [displayedMessages, isTyping])
+  }, [leftMessages, leftTyping])
 
+  // Left side simulation
   useEffect(() => {
-    const conversation = conversations[currentConversation]
-    setDisplayedMessages([])
-    setIsTyping(false)
+    const conversation = leftConversations[leftConversationIndex]
+    setLeftMessages([])
+    setLeftTyping(false)
 
-    // Clear any existing timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
+    if (leftTimeoutRef.current) clearTimeout(leftTimeoutRef.current)
 
     let messageIndex = 0
 
     const showNextMessage = () => {
       if (messageIndex >= conversation.messages.length) {
-        // Wait 3 seconds then move to next conversation
-        timeoutRef.current = setTimeout(() => {
-          setCurrentConversation((prev) => (prev + 1) % conversations.length)
+        leftTimeoutRef.current = setTimeout(() => {
+          setLeftConversationIndex((prev) => (prev + 1) % leftConversations.length)
         }, 3000)
         return
       }
 
       const message = conversation.messages[messageIndex]
 
-      timeoutRef.current = setTimeout(() => {
-        if (message.sender === "ai") {
-          setIsTyping(true)
-          timeoutRef.current = setTimeout(() => {
-            setDisplayedMessages((prev) => [...prev, message])
-            setIsTyping(false)
+      leftTimeoutRef.current = setTimeout(() => {
+        if (message.sender === "CertainAg") {
+          setLeftTyping(true)
+          leftTimeoutRef.current = setTimeout(() => {
+            setLeftMessages((prev) => [...prev, message])
+            setLeftTyping(false)
             messageIndex++
             showNextMessage()
-          }, 800) // Reduced typing delay from 1500ms to 800ms for faster replies
+          }, 800)
         } else {
-          setDisplayedMessages((prev) => [...prev, message])
+          setLeftMessages((prev) => [...prev, message])
           messageIndex++
           showNextMessage()
         }
@@ -182,14 +176,53 @@ export function AITeamSection() {
     }
 
     showNextMessage()
-
-    // Cleanup timeout on unmount or conversation change
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+      if (leftTimeoutRef.current) clearTimeout(leftTimeoutRef.current)
     }
-  }, [currentConversation])
+  }, [leftConversationIndex])
+
+  // Right side simulation
+  useEffect(() => {
+    const conversation = rightConversations[rightConversationIndex]
+    setRightMessages([])
+    setRightTyping(false)
+
+    if (rightTimeoutRef.current) clearTimeout(rightTimeoutRef.current)
+
+    let messageIndex = 0
+
+    const showNextMessage = () => {
+      if (messageIndex >= conversation.messages.length) {
+        rightTimeoutRef.current = setTimeout(() => {
+          setRightConversationIndex((prev) => (prev + 1) % rightConversations.length)
+        }, 3000)
+        return
+      }
+
+      const message = conversation.messages[messageIndex]
+
+      rightTimeoutRef.current = setTimeout(() => {
+        if (message.sender === "CertainAg") {
+          setRightTyping(true)
+          rightTimeoutRef.current = setTimeout(() => {
+            setRightMessages((prev) => [...prev, message])
+            setRightTyping(false)
+            messageIndex++
+            showNextMessage()
+          }, 800)
+        } else {
+          setRightMessages((prev) => [...prev, message])
+          messageIndex++
+          showNextMessage()
+        }
+      }, message.delay)
+    }
+
+    showNextMessage()
+    return () => {
+      if (rightTimeoutRef.current) clearTimeout(rightTimeoutRef.current)
+    }
+  }, [rightConversationIndex])
 
   return (
     <section id="ai-team" ref={sectionRef} className="relative z-10">
@@ -202,7 +235,7 @@ export function AITeamSection() {
               }`}
             >
               <MessageCircle className="w-4 h-4" />
-              AI Car Sales Assistant Demo
+              AI Agriculture Assistant Demo
             </div>
 
             <h2
@@ -212,7 +245,7 @@ export function AITeamSection() {
             >
               See AI Handle{" "}
               <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Real Car Sales
+                Expert Farming Queries
               </span>
             </h2>
 
@@ -221,7 +254,7 @@ export function AITeamSection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              Watch how our AI handles car inquiries, books test drives, and provides 24/7 automotive support.
+              Watch how our AI provides crop advice, diagnoses diseases, and monitors market prices 24/7.
             </p>
           </div>
 
@@ -241,7 +274,7 @@ export function AITeamSection() {
                         <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
-                            <span className="font-medium text-slate-700">Car Dealership AI</span>
+                            <span className="font-medium text-slate-700">Generic AI</span>
                           </div>
                           <div className="flex items-center gap-1 text-slate-500">
                             <Clock className="w-3 h-3" />
@@ -252,13 +285,13 @@ export function AITeamSection() {
                         <div className="bg-slate-900 px-6 py-4 text-white">
                           <div className="flex items-center gap-3">
                             <img
-                              src="/images/michael-ai-agent.jpg"
-                              alt="Michael - AI Agent"
+                              src="/images/gchat.webp"
+                              alt="CertainAg AI"
                               className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                             />
                             <div className="flex-1">
-                              <h3 className="font-semibold text-sm">Michael - AI Sales Agent</h3>
-                              <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
+                              <h3 className="font-semibold text-sm">Generic AI Agent</h3>
+                             
                             </div>
                             <div className="text-xs text-green-400 flex items-center gap-1">
                               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
@@ -273,21 +306,21 @@ export function AITeamSection() {
                           className="h-96 overflow-y-scroll scrollbar-hide p-4 space-y-3 bg-slate-50"
                           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                         >
-                          {displayedMessages.map((message, index) => (
+                          {leftMessages.map((message, index) => (
                             <div
                               key={index}
-                              className={`flex ${message.sender === "customer" ? "justify-end" : "justify-start"}`}
+                              className={`flex ${message.sender === "farmer" ? "justify-end" : "justify-start"}`}
                             >
-                              {message.sender === "ai" && (
+                              {message.sender === "CertainAg" && (
                                 <img
-                                  src="/images/michael-ai-agent.jpg"
+                                  src="/images/gchat.webp"
                                   alt="Michael"
                                   className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                                 />
                               )}
                               <div
                                 className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${
-                                  message.sender === "customer"
+                                  message.sender === "farmer"
                                     ? "bg-slate-900 text-white rounded-br-md"
                                     : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
                                 }`}
@@ -296,19 +329,19 @@ export function AITeamSection() {
                                   <div key={i}>{line}</div>
                                 ))}
                               </div>
-                              {message.sender === "customer" && (
+                              {message.sender === "farmer" && (
                                 <div className="w-6 h-6 rounded-full bg-slate-400 ml-2 mt-1 flex-shrink-0 flex items-center justify-center text-xs text-white font-medium">
-                                  C
+                                  F
                                 </div>
                               )}
                             </div>
                           ))}
 
                           {/* Typing indicator */}
-                          {isTyping && (
+                          {leftTyping && (
                             <div className="flex justify-start items-start">
                               <img
-                                src="/images/michael-ai-agent.jpg"
+                                src="/images/gchat.webp"
                                 alt="Michael"
                                 className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                               />
@@ -331,7 +364,7 @@ export function AITeamSection() {
 
                         <div className="p-4 bg-white border-t border-slate-200">
                           <div className="flex items-center gap-3 bg-slate-100 rounded-full px-4 py-2">
-                            <span className="text-slate-500 text-sm lg:text-base flex-1">Michael is responding...</span>
+                            <span className="text-slate-500 text-sm lg:text-base flex-1">Generic AI is responding...</span>
                             <div className="w-6 h-6 bg-slate-900 rounded-full flex items-center justify-center">
                               <Zap className="w-3 h-3 text-white" />
                             </div>
@@ -359,7 +392,7 @@ export function AITeamSection() {
                         <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
-                            <span className="font-medium text-slate-700">Car Dealership AI</span>
+                            <span className="font-medium text-slate-700">CertainAG AI</span>
                           </div>
                           <div className="flex items-center gap-1 text-slate-500">
                             <Clock className="w-3 h-3" />
@@ -370,12 +403,12 @@ export function AITeamSection() {
                         <div className="bg-slate-900 px-6 py-4 text-white">
                           <div className="flex items-center gap-3">
                             <img
-                              src="/images/michael-ai-agent.jpg"
-                              alt="Michael - AI Agent"
+                              src="/images/gchat.webp"
+                              alt="CertainAg AI"
                               className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                             />
                             <div className="flex-1">
-                              <h3 className="font-semibold text-sm">Michael - AI Sales Agent</h3>
+                              <h3 className="font-semibold text-sm">CertainAG Sales Agent</h3>
                               <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
                             </div>
                             <div className="text-xs text-green-400 flex items-center gap-1">
@@ -391,21 +424,21 @@ export function AITeamSection() {
                           className="h-96 overflow-y-scroll scrollbar-hide p-4 space-y-3 bg-slate-50"
                           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                         >
-                          {displayedMessages.map((message, index) => (
+                          {rightMessages.map((message, index) => (
                             <div
                               key={index}
-                              className={`flex ${message.sender === "customer" ? "justify-end" : "justify-start"}`}
+                              className={`flex ${message.sender === "farmer" ? "justify-end" : "justify-start"}`}
                             >
-                              {message.sender === "ai" && (
+                              {message.sender === "CertainAg" && (
                                 <img
-                                  src="/images/michael-ai-agent.jpg"
+                                  src="/images/gchat.webp"
                                   alt="Michael"
                                   className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                                 />
                               )}
                               <div
                                 className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${
-                                  message.sender === "customer"
+                                  message.sender === "farmer"
                                     ? "bg-slate-900 text-white rounded-br-md"
                                     : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
                                 }`}
@@ -414,19 +447,19 @@ export function AITeamSection() {
                                   <div key={i}>{line}</div>
                                 ))}
                               </div>
-                              {message.sender === "customer" && (
+                              {message.sender === "farmer" && (
                                 <div className="w-6 h-6 rounded-full bg-slate-400 ml-2 mt-1 flex-shrink-0 flex items-center justify-center text-xs text-white font-medium">
-                                  C
+                                  F
                                 </div>
                               )}
                             </div>
                           ))}
 
                           {/* Typing indicator */}
-                          {isTyping && (
+                          {rightTyping && (
                             <div className="flex justify-start items-start">
                               <img
-                                src="/images/michael-ai-agent.jpg"
+                                src="/images/gchat.webp"
                                 alt="Michael"
                                 className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                               />

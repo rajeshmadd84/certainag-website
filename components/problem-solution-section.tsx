@@ -169,7 +169,7 @@ export function ProblemSolutionSection() {
         </div>
 
         {/* Stats Row */}
-        <div
+        {/*<div
           className={`grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
@@ -189,7 +189,7 @@ export function ProblemSolutionSection() {
         </div>
 
         {/* CTA Section */}
-        <div
+        {/*<div
           className={`text-center bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-1000 delay-900 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
@@ -207,7 +207,7 @@ export function ProblemSolutionSection() {
             Get Free Response Audit
             <ArrowRight />
           </Button>
-        </div>
+        </div>*/}
       </div>
     </section>
   )
