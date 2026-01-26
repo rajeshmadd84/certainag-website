@@ -29,22 +29,8 @@ export function GlassmorphismNav() {
 
         console.log("[v0] Scroll event - currentScrollY:", currentScrollY, "lastScrollY:", lastScrollY.current)
 
-        // Only hide/show after scrolling past 50px to avoid flickering at top
-        if (currentScrollY > 50) {
-          if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 5) {
-            // Scrolling down - hide navbar
-            console.log("[v0] Hiding navbar - scrolling down")
-            setIsVisible(false)
-          } else if (lastScrollY.current - currentScrollY > 5) {
-            // Scrolling up - show navbar
-            console.log("[v0] Showing navbar - scrolling up")
-            setIsVisible(true)
-          }
-        } else {
-          // Always show navbar when near top
-          console.log("[v0] Showing navbar - near top")
-          setIsVisible(true)
-        }
+        // Always show navbar
+        setIsVisible(true)
 
         lastScrollY.current = currentScrollY
       }
@@ -103,97 +89,82 @@ export function GlassmorphismNav() {
   return (
     <>
       <nav
-        className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+        className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 transition-all duration-500 ${
           isVisible ? "translate-y-0 opacity-100" : "-translate-y-20 md:-translate-y-24 opacity-0"
         } ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         style={{
           transition: hasLoaded ? "all 0.5s ease-out" : "opacity 0.8s ease-out, transform 0.8s ease-out",
         }}
       >
-        {/* Main Navigation */}
-        <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
-          <div className="bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 md:px-6 md:py-2">
-            <div className="flex items-center justify-between">
-              {/* Logo */}
-              <Link
-                href="/"
-                className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
-              >
-                <div className="h-8 md:h-9 flex items-center">
-                  <Image
-                    src="/images/cag-logo.svg"
-                    alt="CertainAg"
-                    width={156}
-                    height={36}
-                    className="h-full w-auto object-contain"
-                    priority
-                  />
-                </div>
-              </Link>
+        {/* Logo Block */}
+        <div className="bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 shadow-lg flex items-center h-12 md:h-16">
+          <Link
+            href="/"
+            className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
+          >
+            <Image
+              src="/images/cag-logo.svg"
+              alt="CertainAg"
+              width={156}
+              height={36}
+              className="h-8 md:h-9 w-auto object-contain"
+              priority
+            />
+          </Link>
+        </div>
 
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
-                {navigation.map((item) =>
-                  item.href.startsWith("/") ? (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer"
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.href)}
-                      className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer"
-                    >
-                      {item.name}
-                    </button>
-                  ),
-                )}
-              </div>
-
-              {/* Desktop CTA Button Removed */}
-
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-slate-900 hover:scale-110 transition-transform duration-200 cursor-pointer"
-              >
-                <div className="relative w-6 h-6">
-                  <Menu
-                    size={24}
-                    className={`absolute inset-0 transition-all duration-300 ${
-                      isOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
-                    }`}
-                  />
-                  <X
-                    size={24}
-                    className={`absolute inset-0 transition-all duration-300 ${
-                      isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-180 scale-75"
-                    }`}
-                  />
-                </div>
-              </button>
-            </div>
+        {/* Desktop Navigation Block */}
+        <div className="hidden md:flex bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-8 py-2 shadow-lg items-center h-16">
+          <div className="flex items-center space-x-8">
+            {navigation.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer whitespace-nowrap"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer whitespace-nowrap"
+                >
+                  {item.name}
+                </button>
+              ),
+            )}
           </div>
         </div>
 
-        <div className="md:hidden relative">
-          {/* Backdrop overlay */}
-          <div
-            className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${
-              isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-            onClick={() => setIsOpen(false)}
-            style={{ top: "0", left: "0", right: "0", bottom: "0", zIndex: -1 }}
-          />
+        {/* Mobile Menu Trigger Block */}
+        <div className="md:hidden bg-white/70 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 shadow-lg flex items-center h-12">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-slate-900 hover:scale-110 transition-transform duration-200 cursor-pointer"
+          >
+            <div className="relative w-6 h-6">
+              <Menu
+                size={24}
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
+                }`}
+              />
+              <X
+                size={24}
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-180 scale-75"
+                }`}
+              />
+            </div>
+          </button>
+        </div>
 
-          {/* Menu container */}
+        {/* Mobile Menu Dropdown - Positioned absolutely below the trigger */}
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2">
           <div
-            className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${
+            className={`w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
           >
@@ -235,6 +206,14 @@ export function GlassmorphismNav() {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Backdrop - Moved outside the nav flex container to cover full screen correctly */}
+      <div
+        className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-all duration-300 md:hidden ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
     </>
   )
 }

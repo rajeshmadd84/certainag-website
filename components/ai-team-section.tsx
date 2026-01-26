@@ -43,26 +43,46 @@ const rightConversations = [
     messages: [
       { text: "Suggest to me the best crop to grow?", sender: "farmer", delay: 0 },
       {
-        text: "Brown spots on tomato leaves often indicate Early Blight or Septoria Leaf Spot. Based on local weather patterns, humidity has been high.",
+        text: "what is your soil type and what is your previous crop?",
         sender: "CertainAg",
         delay: 1000,
       },
       {
-        text: "I recommend: \n1. Pruning infected lower leaves.\n2. Avoiding overhead watering.\n3. Applying a copper-based fungicide if it spreads.",
-        sender: "CertainAg",
+        text: "Loami soil and  Black gram",
+        sender: "farmer",
         delay: 2500,
       },
       {
-        text: "Would you like me to check the local availability of organic fungicides at the Serilingampalli market?",
+        text: "I’ve analysed your current soil health and your previous crop cycle",
         sender: "CertainAg",
         delay: 4000,
       },
-      { text: "Yes, please. Also, how often should I water them now?", sender: "farmer", delay: 5500 },
+      
       {
-        text: "In January's cooler weather, watering every 3-4 days is usually sufficient. Always check the top inch of soil first!",
+        text: "While both Maize and Chilli have historically shown high yields for your land type, our predictive models forecast a significantly higher market price for Chilli next season.",
         sender: "CertainAg",
-        delay: 6500,
+        delay: 5000,
       },
+      {
+        text: "Our recommation is Chilli 🌶",
+        sender: "CertainAg",
+        delay: 6000,
+      },
+      {
+        text: "Why do your recommend chilli over maize?",
+        sender: "farmer",
+        delay: 7500,
+      },
+      {
+        text: "Best alignment with your soil micro & macro levels + highest projected profit margin.",
+        sender: "CertainAg",
+        delay: 9000,
+      },
+      
+      
+        
+       
+
     ],
   },
   {
