@@ -76,14 +76,14 @@ export function TestimonialsSection() {
         <div className="text-center mb-16 md:mb-32">
           <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-white/60 text-sm font-medium tracking-wider uppercase mb-6">
             <div className="w-8 h-px bg-white/30"></div>
-            Success Stories
+            Your Digital Agronomist
             <div className="w-8 h-px bg-white/30"></div>
           </div>
           <h2 className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight text-balance">
-            The businesses we <span className="font-medium italic">empower</span>
+          You have questions. <span className="font-medium italic">We have answers.</span>
           </h2>
           <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Discover how leading businesses are transforming their customer engagement with AI-powered chat solutions
+          From seed selection to harvest timing, empower your farm with instant, data-backed diagnostics that traditional advisory can't match.
           </p>
         </div>
 

@@ -48,7 +48,7 @@ export function HeroSection() {
 
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 mt-12 animate-fade-in-badge">
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-lg font-medium mb-8 mt-12 animate-fade-in-badge">
          
           Building Hyper-local
         </div>
@@ -61,7 +61,7 @@ export function HeroSection() {
             <span className="text-foreground">Agriculture</span>
             <RotatingText
               texts={["Predictable", "Scalable", "Investable"]}
-              mainClassName="px-2 sm:px-2 md:px-3 text-white overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm"
+              mainClassName="px-2 sm:px-2 md:px-3 text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg border border-black/10 bg-white backdrop-blur-sm"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -76,7 +76,7 @@ export function HeroSection() {
 
         {/* Subheading */}
         <p className="text-base sm:text-xl md:text-2xl text-white text-balance max-w-sm sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 animate-fade-in-subheading font-light">
-        Farming is a science, not a gamble. CertainAG uses crop specific, hyper-local AI models to make agricultural outcomes predictable.
+        Farming is a science, not a gamble. CertainAg uses crop specific, hyper-local AI models to make agricultural outcomes predictable.
         </p>
 
         {/* CTA Buttons - Hidden */}

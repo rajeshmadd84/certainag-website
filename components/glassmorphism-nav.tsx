@@ -6,10 +6,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 const navigation = [
-  { name: "Problems", href: "#features" },
-  { name: "AI Demo", href: "#ai-team" },
-  { name: "Insights", href: "#testimonials" },
-  { name: "Crop Solutions", href: "/car-dealerships" },
+  { name: "Problem", href: "#problem" },
+  { name: "CertainAg AI", href: "#ai-team" },
+  { name: "Contact", href: "#contact" },
 ]
 
 export function GlassmorphismNav() {
@@ -121,7 +120,7 @@ export function GlassmorphismNav() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer whitespace-nowrap"
+                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-bold text-lg cursor-pointer whitespace-nowrap"
                 >
                   {item.name}
                 </Link>
@@ -129,7 +128,7 @@ export function GlassmorphismNav() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-medium cursor-pointer whitespace-nowrap"
+                  className="text-slate-900/80 hover:text-slate-900 hover:scale-105 transition-all duration-200 font-bold text-lg cursor-pointer whitespace-nowrap"
                 >
                   {item.name}
                 </button>
@@ -175,7 +174,7 @@ export function GlassmorphismNav() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`text-slate-900/80 hover:text-slate-900 hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
+                      className={`text-slate-900/80 hover:text-slate-900 hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-bold text-lg cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
                         isOpen ? "animate-mobile-menu-item" : ""
                       }`}
                       style={{
@@ -189,7 +188,7 @@ export function GlassmorphismNav() {
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.href)}
-                      className={`text-slate-900/80 hover:text-slate-900 hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
+                      className={`text-slate-900/80 hover:text-slate-900 hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-bold text-lg cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
                         isOpen ? "animate-mobile-menu-item" : ""
                       }`}
                       style={{

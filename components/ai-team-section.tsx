@@ -85,22 +85,7 @@ const rightConversations = [
 
     ],
   },
-  {
-    title: "Market Price Update",
-    messages: [
-      { text: "What's the current market price for Wheat in Serilingampalli?", sender: "farmer", delay: 0 },
-      {
-        text: "As of today, Wheat is trading at approx. ₹2,450 per quintal in the local mandis. Prices have seen a 2% rise this week.",
-        sender: "CertainAg",
-        delay: 1000,
-      },
-      {
-        text: "Would you like me to alert you if the price crosses ₹2,600?",
-        sender: "CertainAg",
-        delay: 2500,
-      },
-    ],
-  },
+  
 ]
 
 export function AITeamSection() {
@@ -412,7 +397,7 @@ export function AITeamSection() {
                         <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
-                            <span className="font-medium text-slate-700">CertainAG AI</span>
+                            <span className="font-medium text-slate-700">CertainAg AI</span>
                           </div>
                           <div className="flex items-center gap-1 text-slate-500">
                             <Clock className="w-3 h-3" />
@@ -428,8 +413,8 @@ export function AITeamSection() {
                               className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
                             />
                             <div className="flex-1">
-                              <h3 className="font-semibold text-sm">CertainAG Sales Agent</h3>
-                              <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
+                              <h3 className="font-semibold text-sm">CertainAg</h3>
+                              
                             </div>
                             <div className="text-xs text-green-400 flex items-center gap-1">
                               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
@@ -502,7 +487,7 @@ export function AITeamSection() {
 
                         <div className="p-4 bg-white border-t border-slate-200">
                           <div className="flex items-center gap-3 bg-slate-100 rounded-full px-4 py-2">
-                            <span className="text-slate-500 text-sm lg:text-base flex-1">Michael is responding...</span>
+                            <span className="text-slate-500 text-sm lg:text-base flex-1">CertainAg is responding...</span>
                             <div className="w-6 h-6 bg-slate-900 rounded-full flex items-center justify-center">
                               <Zap className="w-3 h-3 text-white" />
                             </div>
